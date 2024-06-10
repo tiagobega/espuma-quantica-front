@@ -1,0 +1,18 @@
+.Container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+
+  &--full {
+    max-width: none;
+  }
+
+  @include responsive-map(
+    (
+      max-width: (
+        md: 1100,
+      ),
+    )
+  );
+}

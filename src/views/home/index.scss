@@ -1,0 +1,69 @@
+.HomeView {
+  width: 100%;
+
+  &__banner {
+    height: 100vh;
+    background-color: red;
+    overflow: hidden;
+    position: relative;
+
+    $BORDER_RADIUS_MOBILE: 40;
+    $BORDER_RADIUS_DESKTOP: 60;
+
+    @include responsive-map(
+      (
+        border-bottom-right-radius: (
+          xs: $BORDER_RADIUS_MOBILE,
+          md: $BORDER_RADIUS_DESKTOP,
+        ),
+        border-bottom-left-radius: (
+          xs: $BORDER_RADIUS_MOBILE,
+          md: $BORDER_RADIUS_DESKTOP,
+        ),
+      )
+    );
+
+    &__background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__content {
+      position: absolute;
+      background: rgba($white, 0.4);
+      backdrop-filter: blur(20px);
+      filter: drop-shadow(0px 20px 38px rgba(0, 0, 0, 0.4));
+      top: 50%;
+      transform: translateY(-50%);
+
+      @include responsive-map(
+        (
+          width: 696,
+          padding: 32,
+          border-radius: 32,
+          right: 14,
+        )
+      );
+    }
+  }
+
+  &__stickers {
+    display: flex;
+    flex-direction: column;
+
+    @include responsive-map(
+      (
+        padding-top: 64,
+        padding-bottom: 32,
+        gap: 32,
+      )
+    );
+  }
+}

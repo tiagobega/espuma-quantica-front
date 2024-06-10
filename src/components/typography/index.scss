@@ -1,0 +1,51 @@
+.Typography {
+  $fonts: (10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 42, 48, 52, 64);
+  $weights: (100, 200, 300, 400, 500, 600, 700, 800, 900);
+  $families: ($archia, $montreal);
+  $aligns: (right, left, center);
+
+  font-family: 'montreal';
+  color: $black;
+  font-weight: 400;
+  line-height: 120.31%;
+
+  @include responsive-map(
+    (
+      font-size: (
+        xs: 14,
+        md: 16,
+      ),
+    )
+  );
+
+  &--inherit {
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+  }
+
+  @include withColors();
+
+  &--gradient {
+    color: transparent;
+    background: $linear-gradient;
+    background-clip: text;
+  }
+
+  &--size {
+    @include mapToBreakpoints(font-size, $fonts);
+  }
+
+  &--family {
+    @include mapToBreakpoints(font-family, $families);
+  }
+
+  &--weight {
+    @include mapToBreakpoints(font-weight, $weights, false);
+  }
+
+  &--align {
+    @include mapToBreakpoints(text-align, $aligns);
+  }
+}

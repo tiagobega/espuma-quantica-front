@@ -1,0 +1,63 @@
+// ** Fonts
+$montreal: 'montreal';
+$archia: 'archia';
+
+// ** Screen Sizes
+$screen-mobile: 414;
+$screen-mobile-big: 768;
+$screen-tablet: 1024;
+$screen-tablet-big: 1280;
+$screen-desktop: 1440;
+$screen-desktop-big: 1440;
+
+// ** config
+
+$screenConfig: (
+  xs: (
+    width: $screen-mobile,
+  ),
+  sm: (
+    breakpoint: 576,
+    width: $screen-mobile-big,
+  ),
+  md: (
+    breakpoint: 768,
+    width: $screen-tablet,
+  ),
+  lg: (
+    breakpoint: 1024,
+    width: $screen-tablet-big,
+  ),
+  xl: (
+    breakpoint: 1280,
+    width: $screen-desktop,
+  ),
+);
+
+// ** Media Queries
+$sm: '(min-width: 576px)';
+$md: '(min-width: 768px)';
+$lg: '(min-width: 1024px)';
+$xl: '(min-width: 1280px)';
+$xxl: '(min-width: 1400px)';
+
+$to-xs: '(max-width: 575.98px)';
+$to-sm: '(max-width: 767.98px)';
+$to-md: '(max-width: 1024.98px)';
+$to-lg: '(max-width: 1279.98px)';
+$to-xl: '(max-width: 1399.98px)';
+
+$only-xs: '#{$to-xs}';
+$only-sm: '#{$sm} and #{$to-sm}';
+$only-md: '#{$md} and #{$to-md}';
+$only-lg: '#{$lg} and #{$to-lg}';
+$only-xl: '#{$xl} and #{$to-xl}';
+$only-xxl: '#{$xxl}';
+
+$landscape: '(orientation: landscape)';
+$portrait: '(orientation: portrait)';
+
+// ** interpolations
+$ease-out: cubic-bezier(0, 0, 0, 0.66);
+$ease-in: cubic-bezier(0.66, 0, 1, 1);
+$ease-in-out: cubic-bezier(0.66, 0, 0.33, 1);

@@ -1,0 +1,13 @@
+.Header {
+  width: 100vw;
+  background-color: rgba(0, 0, 255, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  @include responsive-map(
+    (
+      padding: 10,
+    )
+  );
+}
