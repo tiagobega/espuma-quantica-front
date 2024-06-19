@@ -1,0 +1,16 @@
+.Icon {
+  $sizes: (10, 12, 16, 24, 32, 40, 48, 54, 64, 72, 80, 88);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  font-size: 0 !important;
+  
+  &--size {
+    @include mapToBreakpoints(width, $sizes);
+  }
+
+  @include withColors(stroke, stroke-color);
+  @include withColors(fill, fill-color);
+}

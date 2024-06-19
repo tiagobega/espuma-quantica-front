@@ -1,13 +1,68 @@
 .Header {
   width: 100vw;
-  background-color: rgba(0, 0, 255, 0.3);
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.2) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.6);
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 9999;
+  backdrop-filter: blur(10px) blur(20px) blur(30px);
+  filter: drop-shadow(0px 20px 35px rgba(0, 0, 0, 0.1));
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+  }
 
   @include responsive-map(
     (
-      padding: 10,
+      padding-right: 80,
+      padding-left: 80,
+      height: 80,
     )
   );
+
+  &__logo {
+    position: relative;
+    @include responsive-map(
+      (
+        height: 58,
+      )
+    );
+
+    img {
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  &__navbar {
+    height: 100%;
+    &__list {
+      height: 100%;
+      display: flex;
+      align-items: center;
+
+      @include responsive-map(
+        (
+          gap: 32,
+        )
+      );
+      p {
+        line-height: 1;
+        transition: all 300ms;
+
+        &:hover {
+          opacity: 0.75;
+        }
+      }
+    }
+  }
 }

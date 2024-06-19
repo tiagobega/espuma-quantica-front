@@ -1,6 +1,7 @@
 import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
 import {fileURLToPath, URL} from 'node:url';
+import svgr from 'vite-plugin-svgr';
 
 import {compilerOptions} from './tsconfig.json';
 
@@ -22,7 +23,7 @@ function mountAliasPaths() {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), svgr()],
   resolve: {
     alias: mountAliasPaths(),
   },

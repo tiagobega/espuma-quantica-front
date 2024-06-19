@@ -38,7 +38,7 @@
     &__content {
       position: absolute;
       background: rgba($white, 0.4);
-      backdrop-filter: blur(20px);
+      backdrop-filter: blur(10px) blur(20px) blur(30px);
       filter: drop-shadow(0px 20px 38px rgba(0, 0, 0, 0.4));
       top: 50%;
       transform: translateY(-50%);
@@ -65,5 +65,136 @@
         gap: 32,
       )
     );
+
+    &__button {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__frequency {
+    display: flex;
+
+    @include responsive-map(
+      (
+        padding-top: 80,
+        padding-bottom: 80,
+      )
+    );
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        @include responsive-map(
+          (
+            margin-bottom: 24,
+            width: 699,
+          )
+        );
+      }
+      p {
+        @include responsive-map(
+          (
+            max-width: 539,
+            margin-bottom: 80,
+          )
+        );
+      }
+
+      &__features {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @include responsive-map(
+          (
+            width: 466,
+            row-gap: 32,
+            column-gap: 94,
+          )
+        );
+      }
+    }
+
+    &__banner {
+      display: flex;
+      flex-direction: column;
+
+      @include responsive-map(
+        (
+          gap: 36,
+        )
+      );
+
+      &__image {
+        @include responsive-map(
+          (
+            width: 401,
+            height: 439,
+            border-radius: 32,
+          )
+        );
+        background-color: red;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      &__badges {
+        display: flex;
+        justify-content: space-between;
+
+        @include responsive-map(
+          (
+            padding-right: 16,
+            padding-left: 16,
+          )
+        );
+      }
+    }
+  }
+
+  &__future {
+    display: flex;
+    justify-content: space-between;
+    @include responsive-map(
+      (
+        padding-top: 80,
+        padding-bottom: 80,
+      )
+    );
+    &__banner {
+      @include responsive-map(
+        (
+          width: 401,
+          height: 439,
+          border-radius: 32,
+        )
+      );
+      background-color: red;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      @include responsive-map(
+        (
+          width: 540,
+          gap: 32,
+        )
+      );
+    }
   }
 }
