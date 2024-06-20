@@ -1,11 +1,12 @@
 .HomeView {
   width: 100%;
+  background-color: $white;
 
   &__banner {
-    height: 100vh;
-    background-color: red;
     overflow: hidden;
     position: relative;
+    display: flex;
+    align-items: flex-end;
 
     $BORDER_RADIUS_MOBILE: 40;
     $BORDER_RADIUS_DESKTOP: 60;
@@ -20,6 +21,27 @@
           xs: $BORDER_RADIUS_MOBILE,
           md: $BORDER_RADIUS_DESKTOP,
         ),
+        padding-right: (
+          xs: 16,
+        ),
+        padding-left: (
+          xs: 16,
+        ),
+        padding-bottom: (
+          xs: 16,
+        ),
+        height: (
+          xs: #{85svh},
+          lg: #{100svh},
+        ),
+        align-items: (
+          xs: flex-end,
+          lg: center,
+        ),
+        justify-content: (
+          xs: center,
+          lg: flex-end,
+        ),
       )
     );
 
@@ -27,6 +49,8 @@
       position: absolute;
       width: 100%;
       height: 100%;
+      top: 0;
+      left: 0;
 
       video {
         width: 100%;
@@ -36,16 +60,15 @@
     }
 
     &__content {
-      position: absolute;
       background: rgba($white, 0.4);
-      backdrop-filter: blur(10px) blur(20px) blur(30px);
+      backdrop-filter: $glass-blur;
       filter: drop-shadow(0px 20px 38px rgba(0, 0, 0, 0.4));
       top: 50%;
-      transform: translateY(-50%);
+      width: 100%;
 
       @include responsive-map(
         (
-          width: 696,
+          max-width: 696,
           padding: 32,
           border-radius: 32,
           right: 14,
@@ -57,6 +80,7 @@
   &__stickers {
     display: flex;
     flex-direction: column;
+    align-items: center;
 
     @include responsive-map(
       (
@@ -65,6 +89,29 @@
         gap: 32,
       )
     );
+
+    &__image {
+      width: 100%;
+
+      @include responsive-map(
+        (
+          max-width: 470,
+        )
+      );
+
+      > div {
+        width: 100%;
+        position: relative;
+        padding-bottom: 98.09%;
+      }
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+      }
+    }
 
     &__button {
       width: 100%;
@@ -76,58 +123,122 @@
   &__frequency {
     display: flex;
 
-    @include responsive-map(
-      (
-        padding-top: 80,
-        padding-bottom: 80,
-      )
-    );
-
     &__content {
       display: flex;
       flex-direction: column;
+      width: 100%;
+
+      &__midImage {
+        width: 100%;
+        overflow: hidden;
+
+        @include responsive-map(
+          (
+            height: 184,
+            display: (
+              lg: none,
+            ),
+            border-radius: 16,
+            margin-bottom: 32,
+          )
+        );
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
 
       h2 {
         @include responsive-map(
           (
-            margin-bottom: 24,
-            width: 699,
+            margin-bottom: (
+              xs: 32,
+              md: 24,
+            ),
+            max-width: 699,
           )
         );
       }
+
       p {
         @include responsive-map(
           (
             max-width: 539,
-            margin-bottom: 80,
+            margin-bottom: (
+              xs: 32,
+              md: 80,
+            ),
           )
         );
       }
 
       &__features {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        width: 100%;
+
         @include responsive-map(
           (
-            width: 466,
-            row-gap: 32,
-            column-gap: 94,
+            max-width: 466,
+            margin-left: (
+              lg: 73,
+            ),
           )
         );
+
+        ul {
+          grid-template-columns: repeat(2, 1fr);
+
+          @include responsive-map(
+            (
+              display: (
+                xs: none,
+                lg: grid,
+              ),
+              row-gap: 32,
+              column-gap: 94,
+            )
+          );
+        }
+
+        &__item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          @include responsive-map(
+            (
+              gap: 16,
+            )
+          );
+        }
+
+        &__slider {
+          @include responsive-map(
+            (
+              display: (
+                lg: none,
+              ),
+            )
+          );
+        }
       }
     }
 
     &__banner {
-      display: flex;
       flex-direction: column;
 
       @include responsive-map(
         (
+          display: (
+            xs: none,
+            lg: flex,
+          ),
           gap: 36,
         )
       );
 
       &__image {
+        overflow: hidden;
         @include responsive-map(
           (
             width: 401,
@@ -135,7 +246,6 @@
             border-radius: 32,
           )
         );
-        background-color: red;
 
         img {
           width: 100%;
@@ -154,6 +264,27 @@
             padding-left: 16,
           )
         );
+
+        ul {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        &__item {
+          background-color: $black;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          @include responsive-map(
+            (
+              width: 64,
+              height: 64,
+              border-radius: 16,
+            )
+          );
+        }
       }
     }
   }
@@ -161,21 +292,29 @@
   &__future {
     display: flex;
     justify-content: space-between;
+
     @include responsive-map(
       (
-        padding-top: 80,
-        padding-bottom: 80,
+        flex-direction: (
+          xs: column,
+          md: row,
+        ),
       )
     );
+
     &__banner {
+      overflow: hidden;
       @include responsive-map(
         (
-          width: 401,
+          display: (
+            xs: none,
+            md: block,
+          ),
+          width: 373,
           height: 439,
           border-radius: 32,
         )
       );
-      background-color: red;
 
       img {
         width: 100%;
@@ -189,10 +328,341 @@
       flex-direction: column;
       justify-content: flex-start;
 
+      width: 100%;
+
       @include responsive-map(
         (
-          width: 540,
+          align-items: (
+            xs: center,
+            md: flex-start,
+          ),
+          max-width: 540,
           gap: 32,
+        )
+      );
+
+      &__midImage {
+        width: 100%;
+        overflow: hidden;
+
+        @include responsive-map(
+          (
+            height: 211,
+            display: (
+              lg: none,
+            ),
+            border-radius: 16,
+            margin-bottom: 32,
+          )
+        );
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  &__science {
+    width: 100%;
+    background: $linear-gradient;
+    position: relative;
+    overflow: hidden;
+
+    @include responsive-map(
+      (
+        padding-top: (
+          xs: 32,
+          md: 40,
+        ),
+        padding-bottom: (
+          xs: 32,
+          md: 200,
+        ),
+        border-radius: (
+          xs: 16,
+          md: 60,
+        ),
+      )
+    );
+
+    &__background {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: $glass-gradient;
+        backdrop-filter: $glass-blur;
+      }
+    }
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      @include responsive-map(
+        (
+          gap: 64,
+        )
+      );
+    }
+
+    &__title {
+      width: 100%;
+      position: relative;
+
+      @include responsive-map(
+        (
+          max-width: 644,
+        )
+      );
+
+      .Icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-self: flex-end;
+      width: 100%;
+
+      @include responsive-map(
+        (
+          max-width: 480,
+          gap: 60,
+        )
+      );
+    }
+
+    &__card {
+      z-index: 1;
+      background: $glass-gradient;
+      backdrop-filter: $glass-blur;
+      filter: drop-shadow(0px 20px 35px rgba(0, 0, 0, 0.1));
+      width: 100%;
+
+      @include responsive-map(
+        (
+          padding: (
+            xs: 16,
+            md: 42,
+          ),
+          border-radius: (
+            xs: 16,
+            md: 42,
+          ),
+        )
+      );
+    }
+
+    &__human {
+      position: absolute;
+      bottom: 0;
+      mix-blend-mode: color-dodge;
+      @include responsive-map(
+        (
+          display: (
+            xs: none,
+            md: block,
+          ),
+          width: 698,
+          height: 654,
+        )
+      );
+      @include responsive-map(
+        (
+          left: 116,
+        )
+      );
+    }
+  }
+
+  &__energized {
+    display: flex;
+    justify-content: space-between;
+
+    @include responsive-map(
+      (
+        flex-direction: (
+          xs: column,
+          md: row,
+        ),
+      )
+    );
+
+    &__banner {
+      overflow: hidden;
+      @include responsive-map(
+        (
+          display: (
+            xs: none,
+            md: block,
+          ),
+          width: 373,
+          height: 439,
+          border-radius: 32,
+        )
+      );
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      width: 100%;
+
+      @include responsive-map(
+        (
+          align-items: (
+            xs: center,
+            md: flex-start,
+          ),
+          max-width: 540,
+          gap: 32,
+        )
+      );
+
+      &__midImage {
+        width: 100%;
+        overflow: hidden;
+
+        @include responsive-map(
+          (
+            height: 235,
+            display: (
+              lg: none,
+            ),
+            border-radius: 16,
+            margin-bottom: 32,
+          )
+        );
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+  }
+
+  &__resellers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include responsive-map(
+      (
+        gap: 32,
+      )
+    );
+
+    &__list {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      flex-wrap: wrap;
+
+      @include responsive-map(
+        (
+          row-gap: 48,
+        )
+      );
+
+      &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include responsive-map(
+          (
+            gap: 16,
+            width: (
+              xs: #{50%},
+              md: #{33.333%},
+            ),
+          )
+        );
+
+        &__image {
+          background: $linear-gradient;
+          @include responsive-map(
+            (
+              width: (
+                xs: 120,
+                md: 166,
+              ),
+              height: (
+                xs: 120,
+                md: 166,
+              ),
+              border-radius: (
+                xs: 16,
+                md: 20,
+              ),
+              padding: (
+                xs: 9,
+                md: 13,
+              ),
+            )
+          );
+
+          > div {
+            background-color: rgba(0, 0, 0, 1);
+            width: 100%;
+            height: 100%;
+
+            @include responsive-map(
+              (
+                border-radius: 7,
+              )
+            );
+          }
+        }
+      }
+    }
+  }
+
+  &__disclaimer {
+    display: flex;
+
+    h2 {
+      width: 100%;
+      margin: 0 auto;
+      opacity: 0.4;
+
+      @include responsive-map(
+        (
+          max-width: 875,
         )
       );
     }

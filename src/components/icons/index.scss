@@ -6,11 +6,16 @@
   align-items: center;
   height: auto;
   font-size: 0 !important;
-  
+
   &--size {
     @include mapToBreakpoints(width, $sizes);
   }
 
   @include withColors(stroke, stroke-color);
   @include withColors(fill, fill-color);
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
 }

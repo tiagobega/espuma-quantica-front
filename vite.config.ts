@@ -2,6 +2,7 @@ import {defineConfig} from 'vite';
 import react from '@vitejs/plugin-react';
 import {fileURLToPath, URL} from 'node:url';
 import svgr from 'vite-plugin-svgr';
+import autoprefixer from 'autoprefixer';
 
 import {compilerOptions} from './tsconfig.json';
 
@@ -27,7 +28,17 @@ export default defineConfig({
   resolve: {
     alias: mountAliasPaths(),
   },
+  server: {
+    open: 'index.html',
+    port: 4000,
+    host: '0.0.0.0',
+  },
   css: {
+    postcss: {
+      plugins: [
+        autoprefixer({}), // add options if needed
+      ],
+    },
     preprocessorOptions: {
       scss: {
         additionalData: `@use "/src/styles/includes/index.scss" as *;`,

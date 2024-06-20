@@ -1,12 +1,14 @@
 .Button {
   border-radius: 999px;
-  border: 1px solid $black;
   background-color: transparent;
   display: flex;
   align-items: center;
   cursor: pointer;
   width: fit-content;
-  
+  border-width: 1px;
+  border-style: solid;
+  border-color: $black;
+
   @include responsive-map(
     (
       padding-top: 10,
@@ -27,6 +29,20 @@
   .Icon {
     transition: all 300ms $ease-in-out;
   }
+
+  &--variant {
+    &-black {
+      border-color: $black;
+    }
+
+    &-white {
+      border-color: $white;
+      span {
+        color: $white;
+      }
+    }
+  }
+
   &:hover {
     .Icon {
       transform: scale(0.75) rotateZ(90deg);

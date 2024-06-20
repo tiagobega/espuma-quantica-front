@@ -1,9 +1,31 @@
-import {useMemo} from 'react';
 import classNames from 'classnames';
+import {useMemo} from 'react';
+
+import IcBox from '@app/assets/icons/box.svg?react';
+import IcBrocolli from '@app/assets/icons/brocolli.svg?react';
+
+import IcClose from '@app/assets/icons/close.svg?react';
+
+import IcLeaf from '@app/assets/icons/leaf.svg?react';
+
+import IcMenu from '@app/assets/icons/menu.svg?react';
+
+import IcHearth from '@app/assets/icons/heart.svg?react';
+
+import IcScience from '@app/assets/icons/science.svg?react';
+import IcShopBag from '@app/assets/icons/shop_bag.svg?react';
+
+import IcSocialFacebook from '@app/assets/icons/social_facebook.svg?react';
+import IcSocialInstagram from '@app/assets/icons/social_instagram.svg?react';
+import IcSocialWhatsapp from '@app/assets/icons/social_whatsapp.svg?react';
 
 import IcStar from '@app/assets/icons/star.svg?react';
-import IcShopBag from '@app/assets/icons/shop_bag.svg?react';
+
 import IcUser from '@app/assets/icons/user.svg?react';
+
+import IcBadgeCrueltyFree from '@app/assets/icons/badge_cruelty_free.svg?react';
+import IcBadgeLatexFree from '@app/assets/icons/badge_latex_free.svg?react';
+import IcBadgeVegan from '@app/assets/icons/badge_vegan.svg?react';
 
 import {ColorType} from '@app/constants/color';
 
@@ -12,8 +34,28 @@ import {StyleUtils} from '@utils/Style';
 import './index.scss';
 
 export const ICON = {
-  star: IcStar,
+  badgeCrueltyFree: IcBadgeCrueltyFree,
+  badgeLatexFree: IcBadgeLatexFree,
+  badgeVegan: IcBadgeVegan,
+
+  box: IcBox,
+  brocolli: IcBrocolli,
+
+  close: IcClose,
+
+  heart: IcHearth,
+
+  leaf: IcLeaf,
+
+  menu: IcMenu,
+
+  science: IcScience,
   shopBag: IcShopBag,
+  socialFacebook: IcSocialFacebook,
+  socialInstagram: IcSocialInstagram,
+  socialWhasapp: IcSocialWhatsapp,
+  star: IcStar,
+
   user: IcUser,
 } as const;
 

@@ -1,4 +1,36 @@
 @import 'reset-css';
+@import './fonts';
+
+@media screen and (orientation: landscape) {
+  :root {
+    --layoutWidth: 1280;
+    --layoutHeight: 800;
+  }
+}
+
+@media screen and (orientation: portrait) {
+  :root {
+    --layoutWidth: 800;
+    --layoutHeight: 1280;
+  }
+}
+
+@each $configKey, $configValue in $screenConfig {
+  $breakpoint: map-get($configValue, breakpoint);
+  $width: map-get($configValue, width);
+
+  @if (map-get($configValue, breakpoint) == null) {
+    :root {
+      --layoutWidth: #{$width};
+    }
+  } @else {
+    @include respond-to('(min-width: #{$breakpoint}px)') {
+      :root {
+        --layoutWidth: #{$width};
+      }
+    }
+  }
+}
 
 * {
   outline: none;
@@ -17,20 +49,18 @@
     height: 0px;
   }
   &::-webkit-scrollbar-thumb {
-    background: #9b4ef7;
+    background: $blue;
     border: 0px none transparent;
-    border-radius: 50px;
   }
   &::-webkit-scrollbar-thumb:hover {
-    background: #670ad7;
+    background: $blue_dark;
   }
   &::-webkit-scrollbar-thumb:active {
-    background: #9b4ef7;
+    background: $black;
   }
   &::-webkit-scrollbar-track {
-    background: #f9eae1;
-    border: 0px none #ffffff;
-    border-radius: 50px;
+    background: $white;
+    border: 0px none $white;
   }
   &::-webkit-scrollbar-track:hover {
     background: #e8e8e8;
@@ -41,4 +71,10 @@
   &::-webkit-scrollbar-corner {
     background: transparent;
   }
+}
+
+#root {
+  width: 100svw;
+  height: 100svh;
+  overflow: auto;
 }

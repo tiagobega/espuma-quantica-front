@@ -1,40 +1,10 @@
 @use './variables' as *;
 @use './colors' as *;
 
-@media screen and (orientation: landscape) {
-  :root {
-    --layoutWidth: 1280;
-    --layoutHeight: 800;
-  }
-}
-
-@media screen and (orientation: portrait) {
-  :root {
-    --layoutWidth: 800;
-    --layoutHeight: 1280;
-  }
-}
 
 @mixin respond-to($media) {
   @media only screen and #{$media} {
     @content;
-  }
-}
-
-@each $configKey, $configValue in $screenConfig {
-  $breakpoint: map-get($configValue, breakpoint);
-  $width: map-get($configValue, width);
-
-  @if (map-get($configValue, breakpoint) == null) {
-    :root {
-      --layoutWidth: #{$width};
-    }
-  } @else {
-    @include respond-to('(min-width: #{$breakpoint}px)') {
-      :root {
-        --layoutWidth: #{$width};
-      }
-    }
   }
 }
 
@@ -108,7 +78,7 @@
   @if type-of($value) == number {
     @return px-to-vw($value);
   }
-  @return $value; 
+  @return $value;
 }
 
 @mixin withColors($property: color, $className: color) {
@@ -178,15 +148,20 @@
 
 @mixin mapToBreakpoints($property, $variants, $useResponsiveMap: true) {
   @each $breakpointKey, $breakpointValue in $screenConfig {
-    
     &-#{$breakpointKey}- {
       @each $value in $variants {
         &#{$value} {
-          @if($useResponsiveMap) {
-            @include responsive-map(($property: ($breakpointKey: $value)));
+          @if ($useResponsiveMap) {
+            @include responsive-map(
+              (
+                $property: (
+                  $breakpointKey: $value,
+                ),
+              )
+            );
           } @else {
             $configBreakpoint: map-get($breakpointValue, breakpoint);
-            
+
             @if $configBreakpoint == null {
               #{$property}: $value;
             } @else {
@@ -197,6 +172,6 @@
           }
         }
       }
-    } 
+    }
   }
 }

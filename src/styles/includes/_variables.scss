@@ -61,3 +61,7 @@ $portrait: '(orientation: portrait)';
 $ease-out: cubic-bezier(0, 0, 0, 0.66);
 $ease-in: cubic-bezier(0.66, 0, 1, 1);
 $ease-in-out: cubic-bezier(0.66, 0, 0.33, 1);
+
+// ** Others
+
+$glass-blur: blur(10px) blur(20px) blur(30px);

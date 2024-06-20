@@ -4,10 +4,6 @@
   margin: 0 auto;
   position: relative;
 
-  &--full {
-    max-width: none;
-  }
-
   @include responsive-map(
     (
       max-width: (
@@ -15,4 +11,38 @@
       ),
     )
   );
+
+  &--full {
+    max-width: none;
+  }
+
+  &--padding-x {
+    @include responsive-map(
+      (
+        padding-right: (
+          xs: 16,
+          lg: 0,
+        ),
+        padding-left: (
+          xs: 16,
+          lg: 0,
+        ),
+      )
+    );
+  }
+
+  &--padding-y {
+    @include responsive-map(
+      (
+        padding-top: (
+          xs: 48,
+          lg: 80,
+        ),
+        padding-bottom: (
+          xs: 48,
+          lg: 80,
+        ),
+      )
+    );
+  }
 }

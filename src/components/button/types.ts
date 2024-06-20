@@ -18,16 +18,8 @@ export const BUTTON_SIZE = {
 export type ButtonSize = (typeof BUTTON_SIZE)[keyof typeof BUTTON_SIZE];
 
 export const BUTTON_VARIANT = {
-  BRAND_PRIMARY: 'brand-primary',
-  BRAND_SECONDARY: 'brand-secondary',
-  BRAND_ALTERNATE: 'brand-alternate',
-  BRAND_SOFT: 'brand-soft',
-  BRAND_WHITE: 'brand-white',
-  BRAND_GRAYISH: 'brand-grayish',
-  WHITE_OUTLINE: 'white-outline',
-  BLACK_OUTLINE: 'black-outline',
-  SECONDARY: 'secondary',
-  TERTIARY: 'tertiary',
+  WHITE: 'white',
+  BLACK: 'black',
 } as const;
 
 export type ButtonVariant =

@@ -63,8 +63,8 @@ const Typography = <E extends React.ElementType = 'p'>({
     <TypographyComponent
       className={cn(
         'Typography',
-        `Typography--${type}`,
-        `Typography--color-${color}`,
+        `Typography--${type || 'p'}`,
+        color && `Typography--color-${color}`,
         ...familyClasses,
         ...alignClasses,
         ...weightClasses,

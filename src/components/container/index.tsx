@@ -5,6 +5,9 @@ import classNames from 'classnames';
 
 type ContainerOwnProps<E extends React.ElementType> = {
   as?: E;
+  paddingX?: boolean;
+  paddingY?: boolean;
+  full?: boolean;
 };
 
 export type ContainerProps<E extends React.ElementType> = ContainerOwnProps<E> &
@@ -22,7 +25,13 @@ const Container = <E extends React.ElementType = 'section'>({
   const Component = as || 'section';
 
   return (
-    <Component className={classNames('Container', className)} {...rest}>
+    <Component
+      className={classNames('Container', className, {
+        'Container--padding-x': paddingX,
+        'Container--padding-y': paddingY,
+        'Container--full': full
+      })}
+      {...rest}>
       {children}
     </Component>
   );
